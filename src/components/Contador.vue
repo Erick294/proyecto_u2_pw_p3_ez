@@ -1,7 +1,6 @@
 <template>
   <h1>Mi primer componente!!!</h1>
-  <h2>Contador</h2>
-  <h3>{{ titulo }}</h3>
+  <h3>{{ valorTitulo}}</h3>
   <p>{{numero}} <sup>2</sup> = {{obtenerCuadradoComputado}}</p>
   <!--<p>{{numero}} <sup>{{ potencia }}</sup> = {{obtenerCuadradoComputado}}</p>
   <p>{{numero}} <sup>{{ potencia }}</sup> = {{obtenerCuadradoComputado}}</p>
@@ -17,10 +16,25 @@
 <script>
 export default {
     name: 'Contador',
-    props:['titulo'],
+    //props:['titulo', 'inicio'], 1ra forma
+    /*props:{
+        titulo:String,
+        inicio:Number
+    }, 2da forma (forma correcta)*/ 
+    props:{
+        titulo:String,
+        inicio:{
+            type:Number,
+            required:false,
+            default:0,
+            validator(value){
+                return value > 0;
+            }
+        }
+    },
     data(){
         return{
-            numero: 0
+            numero: this.inicio
         }
     },
     methods:{
@@ -29,7 +43,7 @@ export default {
             return Math.pow(this.numero, 2)
         },
         incrementar(){
-            this.numero++
+            this.numero = this.numero+1
         },
         decrementar(){
             this.numero--
@@ -38,7 +52,10 @@ export default {
     computed:{
         obtenerCuadradoComputado(){
             console.log("Computado")
-            return Math.pow(this.numero, 2)
+            return Math.pow(this.numero, 2);
+        },
+        valorTitulo(){
+            return this.titulo || "Valor por defecto";
         }
     }
 }
