@@ -1,6 +1,4 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import AppCalculadora from './AppCalculadora.vue'
 
-import '.css/style.css'
-
-createApp(App).mount('#app')
+createApp(AppCalculadora).mount('#app')
