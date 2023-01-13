@@ -1,4 +1,7 @@
 import { createApp } from 'vue'
-import AppCalculadora from './AppCalculadora.vue'
 
-createApp(AppCalculadora).mount('#app')
+import PokemonPage from './PokemonPage.vue'
+
+import './css/style.css'
+
+createApp(PokemonPage).mount('#app')
