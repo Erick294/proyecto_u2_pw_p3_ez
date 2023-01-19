@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
-import PokemonPage from './PokemonPage.vue'
+import App from './App.vue'
 
 import './css/style.css'
 
-createApp(PokemonPage).mount('#app')
+createApp(App).mount('#app')
