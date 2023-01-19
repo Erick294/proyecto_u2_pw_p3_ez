@@ -1,14 +1,14 @@
 <template>
-  <Pregunta/>
+  <Juego/>
 </template>
 
 <script>
-import Pregunta from './components/Pregunta.vue'
+import Juego from './components/Juego.vue'
 
 export default {
   name: 'App',
   components: {
-    Pregunta
+    Juego
   }
 }
 </script>
