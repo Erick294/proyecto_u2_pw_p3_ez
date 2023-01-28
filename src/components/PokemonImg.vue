@@ -1,47 +1,55 @@
 <template>
-    <div class="pokemon-container">
-      <img v-if=!showPokemon class="oculta-pokemon" :src=getSource alt="No se puede">
-      <img v-if=showPokemon :src=getSource alt="No se puede">
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "PokemonImg",
-    props:{
-        idPokemon:{
-            type:Number,
-            required:true,
-            validator(value){
-                value>0
-            }
-        },
-        showPokemon:{
-            type:Boolean,
-            required:true,
-            default:false
-        }
-    },computed:{
-        getSource(){
-            return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${this.idPokemon}.svg`
-        }
+  <div class="pokemon-container">
+    <img v-if=!mostrarPokemon class="oculta-pokemon"
+         :src="urlImagen"
+         alt="No se puede" >
+    <img v-if=mostrarPokemon
+         :src="urlImagen"
+         alt="No se puede" >
+  </div>
+</template>
+
+<script>
+export default {
+  name: "PokemonImg",
+  data(){
+    return{
+      resultado : null
+    }
+  },
+  props:{
+    idPokemon:{
+      type: Number,
+    },
+    mostrarPokemon:{
+      type: Boolean,
+    }
+  },
+  computed:{
+    urlImagen(){
+      this.resultado = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/"
+      this.resultado += this.idPokemon + ".svg"
+      console.log(this.resultado)
+      return this.resultado
     }
   }
-  </script>
-  
-  <style scoped>
-  .oculta-pokemon {
-    filter: brightness(0);
-    position: relative;
-  }
-  img {
-    /*position: absolute;*/
-    height: 250px;
-    /*right: 32%;*/
-    -webkit-user-select: none;
-    text-align: center;
-  }
-  .pokemon-container {
-    text-align: center;
-  }
-  </style>
+}
+</script>
+
+<style scoped>
+.oculta-pokemon {
+  filter: brightness(0);
+  position: relative;
+}
+
+img {
+  /*position: absolute;*/
+  height: 250px;
+  /*right: 32%;*/
+  margin-left: 600px;
+  text-align: center;
+
+}
+
+
+</style>
